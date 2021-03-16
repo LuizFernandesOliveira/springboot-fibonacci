@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class Fibonacci implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private Long number;

@@ -33,8 +33,34 @@ public class FibonacciController {
 
     @PostMapping("")
     @ApiOperation(value = "Adiciona um novo número de fibonacci")
-    public Fibonacci create(@RequestBody Fibonacci number){
-        return fibonacciRepository.save(number);
+    public void create(){
+        List<Fibonacci> fibonacciList = fibonacciRepository.findAll();
+
+        Fibonacci fibonacciInitial = new Fibonacci();
+        fibonacciInitial.setId(1L);
+        fibonacciInitial.setNumber(0L);
+
+        Fibonacci fibonacciFinal = new Fibonacci();
+        fibonacciFinal.setId(2L);
+        fibonacciFinal.setNumber(1L);
+
+        if(fibonacciList.size() == 0){
+            fibonacciRepository.save(fibonacciInitial);
+            fibonacciRepository.save(fibonacciFinal);
+
+        }else if(fibonacciList.size() == 1){
+            fibonacciRepository.save(fibonacciFinal);
+        }else{
+            fibonacciInitial.setId(fibonacciList.get(fibonacciList.size() - 2).getId());
+            fibonacciInitial.setNumber(fibonacciList.get(fibonacciList.size() - 2).getNumber());
+            fibonacciFinal.setId(fibonacciList.get(fibonacciList.size() - 1).getId());
+            fibonacciFinal.setNumber(fibonacciList.get(fibonacciList.size() - 1).getNumber());
+
+            Fibonacci fibonacciNew = new Fibonacci();
+            fibonacciNew.setId(fibonacciFinal.getId() + 1L);
+            fibonacciNew.setNumber(fibonacciInitial.getNumber() + fibonacciFinal.getNumber());
+            fibonacciRepository.save(fibonacciNew);
+        }
     }
 
     @DeleteMapping("")
