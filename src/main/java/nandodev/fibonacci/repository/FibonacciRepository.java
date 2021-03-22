@@ -1,8 +1,12 @@
 package nandodev.fibonacci.repository;
 
 import nandodev.fibonacci.model.Fibonacci;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface FibonacciRepository extends JpaRepository<Fibonacci, Long> {
-    Fibonacci findById(long id);
+import java.util.List;
+
+public interface FibonacciRepository extends CrudRepository<Fibonacci, Long> {
+
+    List<Fibonacci> findAll();
+
 }
