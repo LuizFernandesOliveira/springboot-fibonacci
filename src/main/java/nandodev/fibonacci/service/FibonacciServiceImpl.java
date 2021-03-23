@@ -59,7 +59,7 @@ public class FibonacciServiceImpl implements FibonacciService {
     }
 
     @Override
-    public Fibonacci delete(){
+    public List<Fibonacci> delete(){
         Fibonacci lastFibonacci = fibonacciRepository
                 .findAll()
                 .stream()
@@ -67,7 +67,7 @@ public class FibonacciServiceImpl implements FibonacciService {
                 .get();
         if (lastFibonacci.getId() != null) {
             fibonacciRepository.deleteById(lastFibonacci.getId());
-            return lastFibonacci;
+            return fibonacciRepository.findAll();
         }
 
         return null;

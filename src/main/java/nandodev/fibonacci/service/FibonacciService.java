@@ -13,6 +13,6 @@ public interface FibonacciService {
 
     List<Fibonacci> create();
 
-    Fibonacci delete();
+    List<Fibonacci> delete();
 
 }

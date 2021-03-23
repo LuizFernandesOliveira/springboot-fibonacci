@@ -40,7 +40,7 @@ public class FibonacciController {
 
     @DeleteMapping("")
     @ApiOperation(value = "Deleta o último número de fibonacci adicionado")
-    public Fibonacci delete(){
+    public List<Fibonacci> delete(){
         return fibonacciService.delete();
     }
 
