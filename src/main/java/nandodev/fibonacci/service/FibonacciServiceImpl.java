@@ -27,7 +27,7 @@ public class FibonacciServiceImpl implements FibonacciService {
     }
 
     @Override
-    public void create(){
+    public List<Fibonacci> create(){
         List<Fibonacci> fibonacciList = fibonacciRepository.findAll();
 
         Fibonacci fibonacciInitial = new Fibonacci();
@@ -55,10 +55,12 @@ public class FibonacciServiceImpl implements FibonacciService {
             fibonacciNew.setNumber(fibonacciInitial.getNumber() + fibonacciFinal.getNumber());
             fibonacciRepository.save(fibonacciNew);
         }
+
+        return fibonacciList;
     }
 
     @Override
-    public void delete(){
+    public Fibonacci delete(){
         Fibonacci lastFibonacci = fibonacciRepository
                 .findAll()
                 .stream()
@@ -66,6 +68,9 @@ public class FibonacciServiceImpl implements FibonacciService {
                 .get();
         if (lastFibonacci.getId() != null) {
             fibonacciRepository.deleteById(lastFibonacci.getId());
+            return lastFibonacci;
         }
+
+        return null;
     }
 }

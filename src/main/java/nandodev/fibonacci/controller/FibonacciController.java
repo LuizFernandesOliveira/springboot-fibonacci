@@ -34,14 +34,14 @@ public class FibonacciController {
 
     @PostMapping("")
     @ApiOperation(value = "Adiciona um novo número de fibonacci")
-    public void create(){
-        fibonacciService.create();
+    public List<Fibonacci> create(){
+        return fibonacciService.create();
     }
 
     @DeleteMapping("")
     @ApiOperation(value = "Deleta o último número de fibonacci adicionado")
-    public void delete(){
-        fibonacciService.delete();
+    public Fibonacci delete(){
+        return fibonacciService.delete();
     }
 
 }

@@ -11,8 +11,8 @@ public interface FibonacciService {
 
     Optional<Fibonacci> findById(Long id);
 
-    void create();
+    List<Fibonacci> create();
 
-    void delete();
+    Fibonacci delete();
 
 }
