@@ -41,7 +41,6 @@ public class FibonacciServiceImpl implements FibonacciService {
         if(fibonacciList.size() == 0){
             fibonacciRepository.save(fibonacciInitial);
             fibonacciRepository.save(fibonacciFinal);
-
         }else if(fibonacciList.size() == 1){
             fibonacciRepository.save(fibonacciFinal);
         }else{
@@ -56,7 +55,7 @@ public class FibonacciServiceImpl implements FibonacciService {
             fibonacciRepository.save(fibonacciNew);
         }
 
-        return fibonacciList;
+        return fibonacciRepository.findAll();
     }
 
     @Override
